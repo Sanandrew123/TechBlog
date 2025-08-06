@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import { useBlog } from '../../hooks/useBlog';
@@ -35,9 +36,9 @@ const Home: React.FC = () => {
           )}
           
           <div className={styles.viewAll}>
-            <a href="/blog" className="btn btn-primary">
+            <Link to="/blog" className="btn btn-primary">
               查看所有文章
-            </a>
+            </Link>
           </div>
         </div>
       </section>
