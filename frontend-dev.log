@@ -1,0 +1,12 @@
+
+> personal-blog@0.0.0 dev
+> vite --host 0.0.0.0 --port 80
+
+build.terserOptions is specified but build.minify is not set to use Terser. Note Vite now defaults to use esbuild for minification. If you still prefer Terser, set build.minify to "terser".
+
+  VITE v5.4.19  ready in 454 ms
+
+  ➜  Local:   http://localhost:80/
+  ➜  Network: http://172.31.20.28:80/
+11:09:47 AM [vite] hmr update /src/pages/Home/Home.tsx
+11:09:52 AM [vite] hmr update /src/pages/Home/Home.tsx

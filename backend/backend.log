@@ -784,3 +784,304 @@
 2025/08/06 07:04:58 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:180
 [0m[33m[0.132ms] [34;1m[rows:1][0m SELECT count(*) FROM "sponsor_orders" WHERE status = 'paid' AND paid_at >= '2025-08-01 00:00:00'
 [GIN] 2025/08/06 - 07:04:58 | 200 |     2.07636ms |             ::1 | GET      "/api/v1/sponsor/stats"
+
+2025/08/06 11:07:37 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:219
+[0m[33m[0.706ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:07:37 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:220
+[0m[33m[0.261ms] [34;1m[rows:1][0m SELECT count(*) FROM "contact_messages"
+[GIN] 2025/08/06 - 11:07:37 | 200 |    2.506209ms |             ::1 | GET      "/api/v1/health"
+
+2025/08/06 11:07:40 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[2.768ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:07:40 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[1.736ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:07:40 | 200 |    4.991192ms |             ::1 | GET      "/api/v1/posts"
+
+2025/08/06 11:09:14 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.510ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:09:14 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.530ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:09:14 | 200 |    2.430293ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:09:19 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:62
+[0m[33m[3.012ms] [34;1m[rows:1][0m INSERT INTO "sponsor_orders" ("order_id","amount","sponsor_name","message","payment_method","status","qr_code_url","transaction_id","paid_at","created_at","updated_at") VALUES ('SP17544785596b2d31c5',50,'测试用户','测试','wechat','pending','','',NULL,'2025-08-06 11:09:19.343','2025-08-06 11:09:19.343') RETURNING "id"
+
+2025/08/06 11:09:19 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:75
+[0m[33m[1.637ms] [34;1m[rows:1][0m UPDATE "sponsor_orders" SET "qr_code_url"='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mock_payment_SP17544785596b2d31c5_50.00',"updated_at"='2025-08-06 11:09:19.345' WHERE "id" = 3
+[GIN] 2025/08/06 - 11:09:19 | 200 |     4.95618ms |       127.0.0.1 | POST     "/api/v1/sponsor/create"
+
+2025/08/06 11:10:03 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.875ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:03 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[1.191ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:03 | 200 |    3.956776ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:03 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.445ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:03 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.444ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:03 | 200 |    1.222503ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:06 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.658ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:06 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.831ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:06 | 200 |    2.791793ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:07 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.480ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:07 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[2.193ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:07 | 200 |    3.012463ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:08 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.492ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:08 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.306ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:08 | 200 |    2.026617ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:08 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.327ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:08 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.425ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:08 | 200 |    1.099016ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.470ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.316ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:09 | 200 |    1.098741ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:10 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.320ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:10:10 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.676ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:10:10 | 200 |    1.453635ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:10:20 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:62
+[0m[33m[2.949ms] [34;1m[rows:1][0m INSERT INTO "sponsor_orders" ("order_id","amount","sponsor_name","message","payment_method","status","qr_code_url","transaction_id","paid_at","created_at","updated_at") VALUES ('SP1754478620e7916223',100,'完整测试用户','测试完整流程','wechat','pending','','',NULL,'2025-08-06 11:10:20.022','2025-08-06 11:10:20.022') RETURNING "id"
+
+2025/08/06 11:10:20 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:75
+[0m[33m[1.851ms] [34;1m[rows:1][0m UPDATE "sponsor_orders" SET "qr_code_url"='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mock_payment_SP1754478620e7916223_100.00',"updated_at"='2025-08-06 11:10:20.024' WHERE "id" = 4
+[GIN] 2025/08/06 - 11:10:20 | 200 |    5.202212ms |       127.0.0.1 | POST     "/api/v1/sponsor/create"
+
+2025/08/06 11:10:23 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:93
+[0m[33m[1.691ms] [34;1m[rows:1][0m SELECT * FROM "sponsor_orders" WHERE order_id = 'SP1754478620e7916223' ORDER BY "sponsor_orders"."id" LIMIT 1
+[GIN] 2025/08/06 - 11:10:23 | 200 |    1.832081ms |       127.0.0.1 | GET      "/api/v1/sponsor/status/SP1754478620e7916223"
+
+2025/08/06 11:10:26 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:199
+[0m[33m[1.721ms] [34;1m[rows:1][0m SELECT * FROM "sponsor_orders" WHERE order_id = 'SP1754478620e7916223' ORDER BY "sponsor_orders"."id" LIMIT 1
+
+2025/08/06 11:10:26 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:227
+[0m[33m[1.815ms] [34;1m[rows:1][0m UPDATE "sponsor_orders" SET "order_id"='SP1754478620e7916223',"amount"=100,"sponsor_name"='完整测试用户',"message"='测试完整流程',"payment_method"='wechat',"status"='paid',"qr_code_url"='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mock_payment_SP1754478620e7916223_100.00',"transaction_id"='226202ebf1834d5e107b40292747ca94',"paid_at"='2025-08-06 11:10:26.907',"created_at"='2025-08-06 11:10:20.022',"updated_at"='2025-08-06 11:10:26.907' WHERE "id" = 4
+[GIN] 2025/08/06 - 11:10:26 | 200 |    3.881081ms |       127.0.0.1 | POST     "/api/v1/sponsor/mock-callback/SP1754478620e7916223?action=pay"
+
+2025/08/06 11:10:30 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:134
+[0m[33m[1.606ms] [34;1m[rows:1][0m SELECT count(*) FROM "sponsor_orders" WHERE status = 'paid'
+
+2025/08/06 11:10:30 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:138
+[0m[33m[0.463ms] [34;1m[rows:3][0m SELECT * FROM "sponsor_orders" WHERE status = 'paid' ORDER BY paid_at DESC LIMIT 20
+[GIN] 2025/08/06 - 11:10:30 | 200 |     2.49852ms |       127.0.0.1 | GET      "/api/v1/sponsor/list"
+
+2025/08/06 11:10:34 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:171
+[0m[33m[1.892ms] [34;1m[rows:1][0m SELECT COALESCE(SUM(amount), 0) FROM "sponsor_orders" WHERE status = 'paid'
+
+2025/08/06 11:10:34 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:173
+[0m[33m[0.350ms] [34;1m[rows:1][0m SELECT count(*) FROM "sponsor_orders" WHERE status = 'paid'
+
+2025/08/06 11:10:34 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:180
+[0m[33m[0.306ms] [34;1m[rows:1][0m SELECT count(*) FROM "sponsor_orders" WHERE status = 'paid' AND paid_at >= '2025-08-01 00:00:00'
+[GIN] 2025/08/06 - 11:10:34 | 200 |    2.852427ms |       127.0.0.1 | GET      "/api/v1/sponsor/stats"
+
+2025/08/06 11:11:02 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:62
+[0m[33m[5.889ms] [34;1m[rows:1][0m INSERT INTO "sponsor_orders" ("order_id","amount","sponsor_name","message","payment_method","status","qr_code_url","transaction_id","paid_at","created_at","updated_at") VALUES ('SP1754478662c2a144a7',30,'匿名赞助者','','wechat','pending','','',NULL,'2025-08-06 11:11:02.292','2025-08-06 11:11:02.292') RETURNING "id"
+
+2025/08/06 11:11:02 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:75
+[0m[33m[10.704ms] [34;1m[rows:1][0m UPDATE "sponsor_orders" SET "qr_code_url"='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mock_payment_SP1754478662c2a144a7_30.00',"updated_at"='2025-08-06 11:11:02.296' WHERE "id" = 5
+[GIN] 2025/08/06 - 11:11:02 | 200 |   16.996217ms |       127.0.0.1 | POST     "/api/v1/sponsor/create"
+
+2025/08/06 11:23:59 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:219
+[0m[33m[0.391ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:23:59 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:220
+[0m[33m[0.409ms] [34;1m[rows:1][0m SELECT count(*) FROM "contact_messages"
+[GIN] 2025/08/06 - 11:23:59 | 200 |    3.399168ms |             ::1 | GET      "/api/v1/health"
+
+2025/08/06 11:24:03 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[6.448ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:03 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.891ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:03 | 200 |    7.734695ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:24:08 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:62
+[0m[33m[5.946ms] [34;1m[rows:1][0m INSERT INTO "sponsor_orders" ("order_id","amount","sponsor_name","message","payment_method","status","qr_code_url","transaction_id","paid_at","created_at","updated_at") VALUES ('SP1754479448341e0812',10,'健康检查','测试','wechat','pending','','',NULL,'2025-08-06 11:24:08.984','2025-08-06 11:24:08.984') RETURNING "id"
+
+2025/08/06 11:24:08 [32m/home/ubuntu/personal-blog/backend/internal/handlers/sponsor.go:75
+[0m[33m[1.572ms] [34;1m[rows:1][0m UPDATE "sponsor_orders" SET "qr_code_url"='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mock_payment_SP1754479448341e0812_10.00',"updated_at"='2025-08-06 11:24:08.987' WHERE "id" = 6
+[GIN] 2025/08/06 - 11:24:08 | 200 |    7.818509ms |       127.0.0.1 | POST     "/api/v1/sponsor/create"
+
+2025/08/06 11:24:52 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.744ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:52 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.332ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:52 | 200 |    2.377019ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:24:52 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.317ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:52 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.371ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:52 | 200 |    1.007045ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:24:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.584ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.476ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:56 | 200 |    2.408772ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:24:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.313ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.427ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:56 | 200 |     965.903µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:24:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.340ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.402ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:57 | 200 |    1.099579ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:24:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.294ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:24:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.628ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:24:57 | 200 |    1.280327ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:06 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[2.031ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:06 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.873ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:06 | 200 |     3.69919ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:06 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.479ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:06 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.368ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:06 | 200 |    1.137952ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.642ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.360ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:09 | 200 |    2.507684ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.297ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.451ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:09 | 200 |     1.21094ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:12 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.465ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:12 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.304ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:12 | 200 |    2.057173ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:13 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.296ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:13 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.396ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:13 | 200 |    1.004761ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:14 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.551ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:14 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.575ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:14 | 200 |    2.576931ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:14 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.306ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:14 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.302ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:14 | 200 |     850.093µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:23 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.486ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:23 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.473ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:23 | 200 |    2.337896ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:25:23 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.307ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:25:23 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.432ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:25:23 | 200 |     976.767µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:55:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.636ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:55:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.367ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:55:43 | 200 |    3.274107ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 11:55:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.326ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 11:55:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.272ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 11:55:43 | 200 |     822.653µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 12:04:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[161.740ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 12:04:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[3.715ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 12:04:09 | 200 |   189.66136ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 12:04:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.268ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 12:04:09 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.273ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 12:04:09 | 200 |     868.614µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 12:04:12 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[2.738ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 12:04:12 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.318ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 12:04:12 | 200 |    3.397976ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 12:04:12 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.329ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 12:04:12 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.271ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 12:04:12 | 200 |     870.966µs |       127.0.0.1 | GET      "/api/v1/posts"

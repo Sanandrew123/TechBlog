@@ -1,0 +1,810 @@
+2025/08/06 02:56:48 No .env file found, using environment variables
+2025/08/06 02:56:48 Database connected successfully
+2025/08/06 02:56:48 Starting database migration...
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[8.739ms] [34;1m[rows:1][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.690ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[12.439ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.696ms] [34;1m[rows:-][0m SELECT * FROM "users" LIMIT 1
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[13.250ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[10.841ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.010ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'
+
+2025/08/06 02:56:48 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[4.756ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:48 [32m
+[0m[33m[0.191ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:48 [32m
+[0m[33m[7.524ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'
+
+2025/08/06 02:56:48 [32m
+[0m[33m[0.328ms] [34;1m[rows:-][0m SELECT * FROM "users" LIMIT 1
+
+2025/08/06 02:56:48 [32m
+[0m[33m[8.084ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[9.051ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.710ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[4.736ms] [34;1m[rows:0][0m ALTER TABLE "users" ALTER COLUMN "username" TYPE varchar(50) USING "username"::varchar(50)
+
+2025/08/06 02:56:49 [32m
+[0m[33m[3.925ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_username' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.933ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'username') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.214ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m
+[0m[33m[7.381ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.707ms] [34;1m[rows:-][0m SELECT * FROM "users" LIMIT 1
+
+2025/08/06 02:56:49 [32m
+[0m[33m[9.080ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[25.991ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.984ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.006ms] [34;1m[rows:0][0m ALTER TABLE "users" ALTER COLUMN "email" TYPE varchar(100) USING "email"::varchar(100)
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.186ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_email' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[3.809ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'email') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.878ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'password') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.245ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m
+[0m[33m[7.342ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.424ms] [34;1m[rows:-][0m SELECT * FROM "users" LIMIT 1
+
+2025/08/06 02:56:49 [32m
+[0m[33m[8.346ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[12.003ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.936ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.719ms] [34;1m[rows:0][0m ALTER TABLE "users" ALTER COLUMN "role" TYPE varchar(20) USING "role"::varchar(20)
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.318ms] [34;1m[rows:0][0m ALTER TABLE "users" ALTER COLUMN "role" SET DEFAULT 'admin'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[4.474ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'role') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.855ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'avatar') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.418ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'bio') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.389ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'active') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.308ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.289ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.318ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'deleted_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.946ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_username' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.939ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_email' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.863ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_deleted_at' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.724ms] [34;1m[rows:1][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND table_type = 'BASE TABLE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.119ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[7.557ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.735ms] [34;1m[rows:-][0m SELECT * FROM "blog_posts" LIMIT 1
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[9.645ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'blog_posts' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[9.413ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'blog_posts'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.671ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'blog_posts'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.442ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.338ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'title') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.401ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'content') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.332ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'excerpt') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.117ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m
+[0m[33m[7.516ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.392ms] [34;1m[rows:-][0m SELECT * FROM "blog_posts" LIMIT 1
+
+2025/08/06 02:56:49 [32m
+[0m[33m[8.879ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'blog_posts' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[8.134ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'blog_posts'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.676ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'blog_posts'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.340ms] [34;1m[rows:0][0m ALTER TABLE "blog_posts" ALTER COLUMN "slug" TYPE varchar(200) USING "slug"::varchar(200)
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.353ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'blog_posts' AND indexname = 'idx_blog_posts_slug' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.414ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'slug') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.614ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'author') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.408ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'tags') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.355ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'cover_image') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.305ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'published') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.311ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'read_time') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.309ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'view_count') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.290ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.298ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.317ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'blog_posts' AND column_name = 'deleted_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'blog_posts' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.284ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'blog_posts' AND indexname = 'idx_blog_posts_deleted_at' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.258ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'blog_posts' AND indexname = 'idx_blog_posts_slug' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.792ms] [34;1m[rows:1][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND table_type = 'BASE TABLE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.127ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.331ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.472ms] [34;1m[rows:-][0m SELECT * FROM "contact_messages" LIMIT 1
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.390ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'contact_messages' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.373ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'contact_messages'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.207ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'contact_messages'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.356ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.330ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'name') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.334ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'email') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.326ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'subject') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.305ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'message') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.376ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'is_read') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.308ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'is_replied') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.315ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.299ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'contact_messages' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'contact_messages' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.844ms] [34;1m[rows:1][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND table_type = 'BASE TABLE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.126ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.227ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'categories'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.566ms] [34;1m[rows:-][0m SELECT * FROM "categories" LIMIT 1
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.484ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.374ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.219ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'categories'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.403ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.112ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m
+[0m[33m[2.339ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'categories'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.261ms] [34;1m[rows:-][0m SELECT * FROM "categories" LIMIT 1
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.532ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.500ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.230ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'categories'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[3.829ms] [34;1m[rows:0][0m ALTER TABLE "categories" ALTER COLUMN "name" TYPE varchar(100) USING "name"::varchar(100)
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.401ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'categories' AND indexname = 'idx_categories_name' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.455ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'name') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.108ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m
+[0m[33m[2.249ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'categories'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.345ms] [34;1m[rows:-][0m SELECT * FROM "categories" LIMIT 1
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.559ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.479ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.212ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'categories'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.367ms] [34;1m[rows:0][0m ALTER TABLE "categories" ALTER COLUMN "slug" TYPE varchar(100) USING "slug"::varchar(100)
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.732ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'categories' AND indexname = 'idx_categories_slug' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.358ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'slug') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.354ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'description') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.119ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m
+[0m[33m[2.259ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'categories'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.335ms] [34;1m[rows:-][0m SELECT * FROM "categories" LIMIT 1
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.524ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[1.463ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'categories'
+
+2025/08/06 02:56:49 [32m
+[0m[33m[0.214ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'categories'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.841ms] [34;1m[rows:0][0m ALTER TABLE "categories" ALTER COLUMN "color" TYPE varchar(7) USING "color"::varchar(7)
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.352ms] [34;1m[rows:0][0m ALTER TABLE "categories" ALTER COLUMN "color" SET DEFAULT '#6366f1'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.539ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'color') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.698ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'post_count') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.259ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.256ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.905ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'categories' AND column_name = 'deleted_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'categories' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.231ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'categories' AND indexname = 'idx_categories_deleted_at' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.207ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'categories' AND indexname = 'idx_categories_name' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.508ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'categories' AND indexname = 'idx_categories_slug' AND schemaname = CURRENT_SCHEMA()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.910ms] [34;1m[rows:1][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND table_type = 'BASE TABLE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.351ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.212ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'techblog' AND table_schema = CURRENT_SCHEMA() AND table_name = 'comments'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.482ms] [34;1m[rows:-][0m SELECT * FROM "comments" LIMIT 1
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[2.458ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'comments' AND constraint_type = 'UNIQUE'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.592ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'techblog' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'comments'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.263ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'comments'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.399ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.386ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'post_id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.343ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'author') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.310ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'email') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.282ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'website') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.400ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'content') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.322ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'approved') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.379ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.363ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'comments' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[1.760ms] [34;1m[rows:1][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'comments' AND constraint_name = 'fk_comments_post'
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:55
+[0m[33m[0.279ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'comments' AND indexname = 'idx_comments_post_id' AND schemaname = CURRENT_SCHEMA()
+2025/08/06 02:56:49 Database migration completed successfully
+
+2025/08/06 02:56:49 [32m/home/ubuntu/personal-blog/backend/internal/database/database.go:81
+[0m[33m[1.047ms] [34;1m[rows:1][0m SELECT * FROM "users" WHERE role = 'admin' AND "users"."deleted_at" IS NULL ORDER BY "users"."id" LIMIT 1
+2025/08/06 02:56:49 Admin user already exists
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/v1/health            --> main.healthCheck (4 handlers)
+[GIN-debug] GET    /api/v1/posts             --> techblog-api/backend/internal/api.(*BlogHandler).GetPosts-fm (4 handlers)
+[GIN-debug] GET    /api/v1/posts/:id         --> techblog-api/backend/internal/api.(*BlogHandler).GetPost-fm (4 handlers)
+[GIN-debug] POST   /api/v1/contact           --> techblog-api/backend/internal/api.(*ContactHandler).SubmitContact-fm (4 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> techblog-api/backend/internal/api.(*AuthHandler).Login-fm (4 handlers)
+[GIN-debug] GET    /api/v1/auth/profile      --> techblog-api/backend/internal/api.(*AuthHandler).GetProfile-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/auth/profile      --> techblog-api/backend/internal/api.(*AuthHandler).UpdateProfile-fm (5 handlers)
+[GIN-debug] POST   /api/v1/auth/change-password --> techblog-api/backend/internal/api.(*AuthHandler).ChangePassword-fm (5 handlers)
+[GIN-debug] POST   /api/v1/auth/refresh      --> techblog-api/backend/internal/api.(*AuthHandler).RefreshToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/admin/posts       --> techblog-api/backend/internal/api.(*BlogHandler).CreatePost-fm (6 handlers)
+[GIN-debug] PUT    /api/v1/admin/posts/:id   --> techblog-api/backend/internal/api.(*BlogHandler).UpdatePost-fm (6 handlers)
+[GIN-debug] DELETE /api/v1/admin/posts/:id   --> techblog-api/backend/internal/api.(*BlogHandler).DeletePost-fm (6 handlers)
+[GIN-debug] GET    /api/v1/admin/messages    --> techblog-api/backend/internal/api.(*ContactHandler).GetMessages-fm (6 handlers)
+[GIN-debug] GET    /api/v1/admin/messages/:id --> techblog-api/backend/internal/api.(*ContactHandler).GetMessage-fm (6 handlers)
+[GIN-debug] PUT    /api/v1/admin/messages/:id/read --> techblog-api/backend/internal/api.(*ContactHandler).MarkAsRead-fm (6 handlers)
+[GIN-debug] PUT    /api/v1/admin/messages/:id/replied --> techblog-api/backend/internal/api.(*ContactHandler).MarkAsReplied-fm (6 handlers)
+[GIN-debug] DELETE /api/v1/admin/messages/:id --> techblog-api/backend/internal/api.(*ContactHandler).DeleteMessage-fm (6 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> main.main.func1 (4 handlers)
+2025/08/06 02:56:49 🚀 Server starting on 0.0.0.0:8080
+2025/08/06 02:56:49 🌍 Environment: development
+2025/08/06 02:56:49 📚 API Documentation: http://0.0.0.0:8080/
+2025/08/06 02:56:49 💚 Health Check: http://0.0.0.0:8080/api/v1/health
+2025/08/06 02:56:49 🔧 Development mode - detailed logging enabled
+2025/08/06 02:56:49 🔑 Default admin: username=admin, password=admin123
+
+2025/08/06 02:58:31 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:203
+[0m[33m[0.920ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 02:58:31 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:204
+[0m[33m[0.789ms] [34;1m[rows:1][0m SELECT count(*) FROM "contact_messages"
+[GIN] 2025/08/06 - 02:58:31 | 200 |    3.352913ms |             ::1 | GET      "/api/v1/health"
+[GIN] 2025/08/06 - 06:01:07 | 404 |       1.782µs |             ::1 | POST     "/api/posts"
+[GIN] 2025/08/06 - 06:01:14 | 404 |       1.478µs |             ::1 | POST     "/auth/login"
+[GIN] 2025/08/06 - 06:01:19 | 404 |       1.262µs |             ::1 | GET      "/health"
+
+2025/08/06 06:01:32 [32m/home/ubuntu/personal-blog/backend/internal/api/auth.go:40
+[0m[33m[2.061ms] [34;1m[rows:1][0m SELECT * FROM "users" WHERE (username = 'admin' AND active = true) AND "users"."deleted_at" IS NULL ORDER BY "users"."id" LIMIT 1
+[GIN] 2025/08/06 - 06:01:32 | 401 |  306.884473ms |             ::1 | POST     "/api/v1/auth/login"
+
+2025/08/06 06:01:49 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[2.660ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:01:49 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[1.436ms] [34;1m[rows:0][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:01:49 | 200 |    4.499934ms |             ::1 | GET      "/api/v1/posts"
+
+2025/08/06 06:01:57 [32m/home/ubuntu/personal-blog/backend/internal/api/contact.go:33
+[0m[33m[4.326ms] [34;1m[rows:1][0m INSERT INTO "contact_messages" ("name","email","subject","message","is_read","is_replied","created_at","updated_at") VALUES ('测试用户','test@example.com','tech-discussion','这是一个测试消息，用于验证联系表单功能是否正常工作。',false,false,'2025-08-06 06:01:57.191','2025-08-06 06:01:57.191') RETURNING "id"
+[GIN] 2025/08/06 - 06:01:57 | 201 |    5.122824ms |             ::1 | POST     "/api/v1/contact"
+
+2025/08/06 06:03:45 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.635ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:03:45 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.384ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:03:45 | 200 |     2.79449ms |             ::1 | GET      "/api/v1/posts"
+
+2025/08/06 06:05:59 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:203
+[0m[33m[0.266ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:05:59 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:204
+[0m[33m[0.394ms] [34;1m[rows:1][0m SELECT count(*) FROM "contact_messages"
+[GIN] 2025/08/06 - 06:05:59 | 200 |    2.148431ms |             ::1 | GET      "/api/v1/health"
+
+2025/08/06 06:11:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.651ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:11:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.420ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:11:56 | 200 |    2.441391ms |             ::1 | GET      "/api/v1/posts"
+
+2025/08/06 06:14:52 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.557ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:14:52 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.393ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:14:52 | 200 |     3.49768ms |             ::1 | GET      "/api/v1/posts"
+
+2025/08/06 06:16:35 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:203
+[0m[33m[0.378ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:16:35 [32m/home/ubuntu/personal-blog/backend/cmd/main.go:204
+[0m[33m[0.402ms] [34;1m[rows:1][0m SELECT count(*) FROM "contact_messages"
+[GIN] 2025/08/06 - 06:16:35 | 200 |    4.084543ms |             ::1 | GET      "/api/v1/health"
+
+2025/08/06 06:16:53 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.554ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:16:53 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[2.252ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:16:53 | 200 |    4.189784ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:16:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[2.576ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:16:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[1.234ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:16:57 | 200 |    4.155895ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:16:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[10.870ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:16:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[2.460ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:16:57 | 200 |   13.650135ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:17:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.519ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:17:56 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.434ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:17:56 | 200 |    2.242129ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:01 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.786ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:01 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[8.356ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:01 | 200 |   10.487221ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:19 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.656ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:19 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.873ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:19 | 200 |    2.783629ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:19 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.340ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:19 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.371ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:19 | 200 |      963.94µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.558ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.372ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:26 | 200 |    2.175536ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.361ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.304ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:26 | 200 |     890.705µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.487ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.362ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:32 | 200 |    2.163744ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.384ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.465ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:32 | 200 |    1.340783ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:40 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.766ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:40 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.320ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:40 | 200 |    2.890094ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:40 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.301ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:40 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.368ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:40 | 200 |    1.068411ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.447ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.513ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:43 | 200 |     2.23331ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:18:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.270ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:18:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.407ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:18:43 | 200 |     944.122µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:19:27 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.549ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:19:27 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.432ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:19:27 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.366ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:19:27 | 200 |    2.210713ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:19:27 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.636ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:19:27 | 200 |     2.82868ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:19:37 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.616ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:19:37 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.363ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:19:37 | 200 |    2.223725ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:19:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.602ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:19:43 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.348ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:19:43 | 200 |     3.24754ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:19:50 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.435ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:19:50 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.359ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:19:50 | 200 |    2.011027ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:22 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.564ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:22 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.363ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:22 | 200 |    2.166094ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:22 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.550ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:22 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.276ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:22 | 200 |    2.054622ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:27 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.541ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:27 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.424ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:27 | 200 |     2.27423ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:28 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.327ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:28 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.353ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:28 | 200 |     968.349µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.448ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.251ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:32 | 200 |    1.940976ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.266ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:32 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.291ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:32 | 200 |     761.311µs |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:20:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[2.054ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:20:57 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.346ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:20:57 | 200 |    3.049849ms |             ::1 | GET      "/api/v1/posts"
+
+2025/08/06 06:27:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[1.453ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:27:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.393ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:27:26 | 200 |     2.14946ms |       127.0.0.1 | GET      "/api/v1/posts"
+
+2025/08/06 06:27:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:67
+[0m[33m[0.263ms] [34;1m[rows:1][0m SELECT count(*) FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL
+
+2025/08/06 06:27:26 [32m/home/ubuntu/personal-blog/backend/internal/api/blog.go:86
+[0m[33m[0.303ms] [34;1m[rows:3][0m SELECT * FROM "blog_posts" WHERE published = true AND "blog_posts"."deleted_at" IS NULL ORDER BY created_at DESC LIMIT 10
+[GIN] 2025/08/06 - 06:27:26 | 200 |       789.9µs |       127.0.0.1 | GET      "/api/v1/posts"
+2025/08/06 07:00:53 🛑 Shutting down server...
+2025/08/06 07:00:54 ✅ Server exited
