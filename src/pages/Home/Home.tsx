@@ -5,7 +5,7 @@ import { useBlog } from '../../hooks/useBlog';
 import styles from './Home.module.css';
 
 const Home: React.FC = () => {
-  const { getFeaturedPosts, loading } = useBlog();
+  const { posts, getFeaturedPosts, loading } = useBlog();
   const featuredPosts = getFeaturedPosts(3);
 
   return (
@@ -62,11 +62,11 @@ const Home: React.FC = () => {
             <div className={styles.aboutVisual}>
               <div className={styles.statsGrid}>
                 <div className={styles.statItem}>
-                  <div className={styles.statNumber}>50+</div>
+                  <div className={styles.statNumber}>{Array.isArray(posts) ? posts.length : 0}</div>
                   <div className={styles.statLabel}>技术文章</div>
                 </div>
                 <div className={styles.statItem}>
-                  <div className={styles.statNumber}>10K+</div>
+                  <div className={styles.statNumber}>{Array.isArray(posts) ? posts.reduce((sum, post) => sum + post.viewCount, 0) : 0}</div>
                   <div className={styles.statLabel}>阅读量</div>
                 </div>
                 <div className={styles.statItem}>

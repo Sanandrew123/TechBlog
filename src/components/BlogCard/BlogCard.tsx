@@ -23,14 +23,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
       
       <div className={styles.content}>
         <div className={styles.meta}>
-          <time className={styles.date} dateTime={post.publishDate}>
-            {getTimeAgo(post.publishDate)}
+          <time className={styles.date} dateTime={post.createdAt}>
+            {getTimeAgo(post.createdAt)}
           </time>
           <span className={styles.readTime}>{post.readTime} 分钟阅读</span>
         </div>
         
         <h3 className={styles.title}>
-          <Link to={`/blog/${post.id}`} className={styles.titleLink}>
+          <Link to={`/blog/${post.slug}`} className={styles.titleLink}>
             {post.title}
           </Link>
         </h3>
@@ -41,14 +41,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         
         <div className={styles.footer}>
           <div className={styles.tags}>
-            {post.tags.map((tag) => (
+            {JSON.parse(post.tags || '[]').map((tag: string) => (
               <span key={tag} className={styles.tag}>
                 {tag}
               </span>
             ))}
           </div>
           
-          <Link to={`/blog/${post.id}`} className={styles.readMore}>
+          <Link to={`/blog/${post.slug}`} className={styles.readMore}>
             阅读更多 →
           </Link>
         </div>

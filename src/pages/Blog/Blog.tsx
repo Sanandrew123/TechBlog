@@ -9,13 +9,20 @@ const Blog: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState('');
 
   const allTags = Array.from(
-    new Set(posts.flatMap(post => post.tags))
+    new Set(posts.flatMap(post => {
+      try {
+        return JSON.parse(post.tags || '[]');
+      } catch {
+        return [];
+      }
+    }))
   ).sort();
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTag = selectedTag === '' || post.tags.includes(selectedTag);
+    const postTags = JSON.parse(post.tags || '[]');
+    const matchesTag = selectedTag === '' || postTags.includes(selectedTag);
     return matchesSearch && matchesTag;
   });
 

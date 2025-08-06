@@ -6,6 +6,7 @@ import Blog from './pages/Blog/Blog';
 import BlogDetail from './pages/BlogDetail/BlogDetail';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
+import Sponsor from './pages/Sponsor/Sponsor';
 import './App.css';
 
 const App: React.FC = () => {
@@ -16,9 +17,10 @@ const App: React.FC = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="blog/:id" element={<BlogDetail />} />
+            <Route path="blog/:slug" element={<BlogDetail />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="sponsor" element={<Sponsor />} />
           </Route>
         </Routes>
       </div>

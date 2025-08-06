@@ -10,7 +10,8 @@ const Header: React.FC = () => {
     { path: '/', label: '首页' },
     { path: '/blog', label: '博客' },
     { path: '/about', label: '关于' },
-    { path: '/contact', label: '联系' }
+    { path: '/contact', label: '联系' },
+    { path: '/sponsor', label: '赞助' }
   ];
 
   const toggleMenu = () => {

@@ -5,14 +5,14 @@ import { formatDate } from '../../utils/dateUtils';
 import styles from './BlogDetail.module.css';
 
 const BlogDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const { getPostById, loading } = useBlog();
+  const { slug } = useParams<{ slug: string }>();
+  const { getPostBySlug, loading } = useBlog();
   
-  if (!id) {
+  if (!slug) {
     return <Navigate to="/blog" replace />;
   }
 
-  const post = getPostById(id);
+  const post = getPostBySlug(slug);
 
   if (loading) {
     return (
@@ -54,8 +54,8 @@ const BlogDetail: React.FC = () => {
           <div className={styles.meta}>
             <div className={styles.metaItem}>
               <span className={styles.metaLabel}>发布日期：</span>
-              <time dateTime={post.publishDate}>
-                {formatDate(post.publishDate)}
+              <time dateTime={post.createdAt}>
+                {formatDate(post.createdAt)}
               </time>
             </div>
             <div className={styles.metaItem}>
@@ -69,7 +69,7 @@ const BlogDetail: React.FC = () => {
           </div>
           
           <div className={styles.tags}>
-            {post.tags.map((tag) => (
+            {JSON.parse(post.tags || '[]').map((tag: string) => (
               <span key={tag} className={styles.tag}>
                 {tag}
               </span>

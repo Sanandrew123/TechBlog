@@ -1,0 +1,27 @@
+# Docker忽略文件 - 减少构建上下文
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.vscode
+.idea
+
+# 前端开发文件
+src/
+public/
+*.log
+frontend.log
+backend.log
+
+# 后端临时文件
+backend/logs/
+backend/uploads/
+backend/tmp/
+
+# 系统文件
+.DS_Store
+Thumbs.db
